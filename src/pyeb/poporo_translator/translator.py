@@ -96,7 +96,7 @@ class translator(Python3ParserVisitor):
         str_machine = '\n__machine__ = '+obj_dict[keys[-1]]
         res += str_machine
         
-        return res
+        return res, obj_dict
     
 
     # Visit a parse tree produced by Python3Parser#eval_input.

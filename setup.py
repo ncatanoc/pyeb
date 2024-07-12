@@ -28,22 +28,24 @@ from setuptools import setup, find_packages
 
 setup(
         name='pyeb',
-        version='1.0.48',
+        version='1.0.60',
         author='Nestor Catano',
         author_email='nestor.catano@gmail.com',
         license='MIT License',
         packages=find_packages('src'),
         package_dir={'': 'src'},
         install_requires=[
-            'z3-solver==4.13.0.0'
+            'z3-solver==4.13.0.0',
+            'antlr4-tools',
+            'antlr4-python3-runtime>=4.13.1'
             ],
         entry_points = {
              'console_scripts': [
                  'pyeb = pyeb.main:main',
                  ]
              },
-        url='https://github.com/ncatanoc/PyEB',
-        description='A Python refinement calculus implementation of Event-B.',
+        url='https://github.com/ncatanoc/pyeb',
+        description='A refinement calculus implementation of Event-B in Python.',
         long_description=(open('README.rst').read()),
         long_description_content_type="text/markdown",
         classifiers=[

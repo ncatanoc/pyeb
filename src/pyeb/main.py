@@ -1,15 +1,15 @@
 from z3 import *
 
 import argparse
-import sys
+import sys, re
 
-from lib.machine import *
+from pyeb.lib.machine import *
 #
 from antlr4 import *
-from poporo_translator.Python3Lexer import Python3Lexer
-from poporo_translator.Python3Parser import Python3Parser
-from poporo_translator.Python3ParserVisitor import Python3ParserVisitor
-from poporo_translator.translator import translator
+from pyeb.poporo_translator.Python3Lexer import Python3Lexer
+from pyeb.poporo_translator.Python3Parser import Python3Parser
+from pyeb.poporo_translator.Python3ParserVisitor import Python3ParserVisitor
+from pyeb.poporo_translator.translator import translator
 #
 
 def test_initialisation_invs_INV(__machine__):
@@ -160,7 +160,7 @@ def main() -> None:
         print("syntax errors")
     else:
         t = translator()
-        obj_file_txt = t.visit(tree)
+        obj_file_txt, obj_dict = t.visit(tree)
 
         # we write the object code produced by the traslator t into
         # an file_name_obj.py file
@@ -175,21 +175,29 @@ def main() -> None:
         sys.path.insert(0,'.')
         __import__(module_name)
         mod = sys.modules[module_name]
-    
-        __machine__ = mod.__machine__
-        # abstract machine proof obligations
-        test_initialisation_invs_INV(__machine__)
-        test_evts_invs_INV(__machine__)
-        test_evts_acts_FIS(__machine__)
-        test_thms_THM(__machine__)
 
-        # refinement machine proof obligations
-        if isinstance(__machine__,BMachineRefines):
-            test_evts_grd_GRD(__machine__)
-            test_evts_act_SIM(__machine__)
-            test_evts_VAR(__machine__)    
-            test_evts_WFIS(__machine__)
-        
+        __machine__ = mod.__machine__
+
+        for class_name , obj in obj_dict.items():
+            __machine__ == obj
+            pattern = r'\w+ref\d+'
+            if re.match(pattern,class_name):
+                pattern1 = r'\w+ref0' 
+                if re.match(pattern1,class_name):  # abstract machine proof obligations  
+                    print('--- Proof obligations for ', class_name, '---')
+                    test_evts_invs_INV(__machine__)
+                    test_evts_acts_FIS(__machine__)
+                    test_thms_THM(__machine__)
+                else:  # refinement machine proof obligations 
+                    print('--- Proof obligations for ', class_name, '---')
+                    test_initialisation_invs_INV(__machine__)
+                    test_evts_invs_INV(__machine__)
+                    test_evts_acts_FIS(__machine__)
+                    test_thms_THM(__machine__)
+                    test_evts_grd_GRD(__machine__)
+                    test_evts_act_SIM(__machine__)
+                    test_evts_VAR(__machine__)    
+                    test_evts_WFIS(__machine__)        
     
 if __name__ == '__main__':
     main()
