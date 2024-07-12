@@ -6,11 +6,11 @@ from z3 import *
 # from lib.context import *
 # from lib.machine import *
 
-from lib.utils import *
-from lib.assignment import *
-from lib.event import *
-from lib.context import *
-from lib.machine import *
+from pyeb.lib.utils import *
+from pyeb.lib.assignment import *
+from pyeb.lib.event import *
+from pyeb.lib.context import *
+from pyeb.lib.machine import *
 
 
 class Context:
