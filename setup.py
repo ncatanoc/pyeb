@@ -46,7 +46,7 @@ setup(
              },
         url='https://github.com/ncatanoc/pyeb',
         description='A refinement calculus implementation of Event-B in Python.',
-        long_description=(open('README.rst').read()),
+        long_description=(open('README.md').read()),
         long_description_content_type="text/markdown",
         classifiers=[
             'Development Status :: 2 - Pre-Alpha',

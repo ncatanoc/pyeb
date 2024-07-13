@@ -32,12 +32,13 @@ It is recommended to run **pyeb** in a virtual environment thus it will not have
 3.  Running **pyeb**::
 
 	We have included a **sample** folder with several object-oriented
-examples of sequential algorithms, written by J.-R. Abrial in Event-B,
-that we have reproduced in Python.
+examples of sequential algorithms (binary search, squared root,
+inverse function, etc.) whose original Event-B models have written by J.-R. Abrial.
       
-      pyeb samples/sqrt_oo.py
+      **pyeb** sample/sqrt_oo.py
 
-4.  Optionally, you might want to deactivate your virtual environment::
+4.  Optionally, you might want to deactivate your virtual environment
+    after having used **pyeb**::
       
       deactivate
 
@@ -55,7 +56,7 @@ You might want to install and run the latest version of **pyeb** available from 
 
       git init
 
-      git remote add origin https://github.com/ncatanoc/PyEB.git
+      git remote add origin https://github.com/ncatanoc/pyeb.git
 
       git pull origin main
       
@@ -77,4 +78,4 @@ You might want to install and run the latest version of **pyeb** available from 
 Troubleshooting
 =======================
 
-For any questions or issues regarding **pyeb**, contact Nestor Catano nestor.catano@gmail.com.
+For any questions or issues regarding **pyeb**, contact Nestor Catano [nestor.catano@gmail.com.com](mailto: nestor.catano@gmail.com).
