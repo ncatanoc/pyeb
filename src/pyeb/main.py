@@ -171,7 +171,7 @@ def main() -> None:
         # we load/run the code in the file_name_obj module
         # which is then used to calculate the proof obligations
         # of the file_name_oo.py program
-        module_name = obj_file_name.replace('.py','')
+        module_name = obj_file_name.replace('/','.').replace('.py','')
         sys.path.insert(0,'.')
         __import__(module_name)
         mod = sys.modules[module_name]
