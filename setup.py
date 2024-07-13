@@ -1,5 +1,5 @@
 """
-PyEB
+pyeb
 
 Copyright (c) Nestor Catano
 
