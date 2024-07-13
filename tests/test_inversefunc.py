@@ -156,7 +156,7 @@ m1.add_ref_event(event_dec_m1)
 __machine__ = m1
 
 
-def test_initialisation_invs_INV(__machine__):
+def test_initialisation_invs_INV():
     """
     proof obligation: invariants preservation for initialisation event. 
     """
@@ -172,7 +172,7 @@ def test_initialisation_invs_INV(__machine__):
     assert s.check() == unsat
     
     
-def test_evts_invs_INV(__machine__):
+def test_evts_invs_INV():
     """
     proof obligation: machine invariants preservation.
     """
@@ -188,7 +188,7 @@ def test_evts_invs_INV(__machine__):
     assert s.check() == unsat
     
     
-def test_evts_acts_FIS(__machine__):
+def test_evts_acts_FIS():
     """
     proof obligation: feasibility of non-deterministic event actions. 
     """
@@ -204,7 +204,7 @@ def test_evts_acts_FIS(__machine__):
     assert s.check() == unsat
     
     
-def test_thms_THM(__machine__):
+def test_thms_THM():
     """
     proof obligation: theorems must hold.
     """
@@ -220,7 +220,7 @@ def test_thms_THM(__machine__):
     assert s.check() == unsat
     
     
-def test_evts_grd_GRD(__machine__):
+def test_evts_grd_GRD():
     """
     proof obligation: concrete event guards must be stronger than abstract event guards.
     """
@@ -236,7 +236,7 @@ def test_evts_grd_GRD(__machine__):
     assert s.check() == unsat
     
     
-def test_evts_act_SIM(__machine__):
+def test_evts_act_SIM():
     """
     proof obligation: concrete event guards simulate abstract event guards.
     """
@@ -252,7 +252,7 @@ def test_evts_act_SIM(__machine__):
     assert s.check() == unsat
     
     
-def test_evts_VAR(__machine__):
+def test_evts_VAR():
     """
     Proof obligation: Convergent events must decrease machine variants.
     """
@@ -269,7 +269,7 @@ def test_evts_VAR(__machine__):
     assert s.check() == unsat
     
     
-def test_evts_WFIS(__machine__):
+def test_evts_WFIS():
     """
     proof obligation: feasibility of event guard witnesses.
     """
