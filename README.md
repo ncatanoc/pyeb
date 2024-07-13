@@ -31,6 +31,8 @@ It is recommended to run **pyeb** in a virtual environment thus it will not have
 
 3.  Running **pyeb**::
 
+	**pyeb** path-to-file.py
+
 	We have included a **sample** folder with several object-oriented
 examples of sequential algorithms (binary search, squared root,
 inverse function, etc.) whose original Event-B models have written by J.-R. Abrial.
@@ -78,4 +80,4 @@ You might want to install and run the latest version of **pyeb** available from 
 Troubleshooting
 =======================
 
-For any questions or issues regarding **pyeb**, contact Nestor Catano [nestor.catano@gmail.com.com](mailto: nestor.catano@gmail.com).
+For any questions or issues regarding **pyeb**, contact Nestor Catano [nestor.catano@gmail.com.com](mailto:nestor.catano@gmail.com).
