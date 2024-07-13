@@ -66,7 +66,7 @@ You might want to install and run the latest version of **pyeb** available from 
 
 2.  Running **pyeb** as a console script::
       
-      python main.py <tests.sqrt>
+      python main.py path-to-file.py
 
 3.  Optionally,  Running **pyeb** as a module::
       
@@ -74,10 +74,10 @@ You might want to install and run the latest version of **pyeb** available from 
 
 4.  Optionally,  Running **pyeb** with **pytest**::
       
-      pytest  <tests/test_sqrt.py>
+      **pytest** path-to-file.py
 
    
 Troubleshooting
 =======================
 
-For any questions or issues regarding **pyeb**, contact Nestor Catano [nestor.catano@gmail.com.com](mailto:nestor.catano@gmail.com).
+For any questions or issues regarding **pyeb**, contact Nestor Catano [nestor.catano@gmail.com](mailto:nestor.catano@gmail.com).
