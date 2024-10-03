@@ -142,6 +142,7 @@ def test_evts_WFIS(__machine__):
 
 
 def main() -> None:
+    print('here in xxx main()')
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'python_file',

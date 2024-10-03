@@ -28,7 +28,7 @@ from setuptools import setup, find_packages
 
 setup(
         name='pyeb',
-        version='1.0.62',
+        version='1.0.63',
         author='Nestor Catano',
         author_email='nestor.catano@gmail.com',
         license='MIT License',

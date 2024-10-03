@@ -41,17 +41,21 @@ It is recommended to run **pyeb** in a virtual environment thus it will not have
 
 2.  Installing **pyeb**::
       
-      pip install --index-url https://test.pypi.org/simple/ pyeb
+      python3 -m pip install pyeb
 
 3.  Running **pyeb**::
 
 	**pyeb** path-to-file.py
+		or
+	pyhon3 -m pyeb path-to-file.py
 
 	We have included a **sample** folder with several object-oriented
 examples of sequential algorithms (binary search, squared root,
-inverse function, etc.) whose original Event-B models have written by J.-R. Abrial.
-      
-      **pyeb** sample/sqrt_oo.py
+inverse function, etc.). 
+
+	**pyeb** sample/sqrt_oo.py
+		or
+	pyhon3 -m pyeb sample/sqrt\_po.py
 
 4.  Optionally, you might want to deactivate your virtual environment
     after having used **pyeb**::
