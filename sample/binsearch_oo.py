@@ -12,7 +12,6 @@ from pyeb.lib.event import *
 from pyeb.lib.context import *
 from pyeb.lib.machine import *
 
-
 class Context:
     def __init__(self):
         self.f = Function('f', IntSort(), IntSort()) # the array of values
@@ -69,7 +68,7 @@ class Machine_BinarySearch_ref1(Machine_BinarySearch_ref0):
         self.abstract_machine = abstract_machine
         self.p = Int('p')
         self.q = Int('q')
-        self.variant = (self.p - self.q)
+        self.variant = (self.q - self.p)
         
     def ref_event_initialisation(self):
         guard = {} # empty dictionary

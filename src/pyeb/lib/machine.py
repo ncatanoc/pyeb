@@ -274,9 +274,8 @@ class BMachine:
       assert th_key in theorems_dict.keys()
 
       th = self.theorems[th_key]
-      theorems_dict.pop(th_key)
 
-      theorems = conjunct_dict(theorems_dict)
+      theorems = conjunct_dict(self.get_theorems().pop(th_key))
       invariants = conjunct_dict(self.get_invariants())
 
       #

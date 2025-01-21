@@ -13,7 +13,7 @@ parts of Event-B' syntax such as non-deterministic assignments,
 events, machines, contexts, and machine refinements.
 
 **pyeb** is implemented as a library and is hosted on **pypi**
-  (Python's package index). It can be installed using **pip**.
+  (Python's package index). [Here is the link](https://pypi.org/project/pyeb/). **pyeb** can be installed using **pip**.
 
 As future work, we plan to support code generation for **pyeb** models into Python and Rust programming languages. Our future work on code generation will focus on two axes: *(i.)* we plan to generate code for sequential programs as described by J.-R. Abrial [here](https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/122/), and *(ii.)* we plan to generate code for concurrent reactive systems similar to the approach followed by the [EventB2Java tool](https://link.springer.com/article/10.1007/s10009-015-0381-2).
 
@@ -45,17 +45,21 @@ It is recommended to run **pyeb** in a virtual environment thus it will not have
 
 3.  Running **pyeb**::
 
-	**pyeb** path-to-file.py
-		or
-	pyhon3 -m pyeb path-to-file.py
+      **pyeb** path-to-file.py
+
+      or
+
+      pyhon3 -m pyeb path-to-file.py
 
 	We have included a **sample** folder with several object-oriented
 examples of sequential algorithms (binary search, squared root,
 inverse function, etc.). 
 
-	**pyeb** sample/sqrt_oo.py
-		or
-	pyhon3 -m pyeb sample/sqrt\_po.py
+      **pyeb** sample/binsearch_oo.py
+
+      or
+
+      pyhon3 -m pyeb sample/binsearch_oo.py
 
 4.  Optionally, you might want to deactivate your virtual environment
     after having used **pyeb**::
@@ -84,15 +88,15 @@ You might want to install and run the latest version of **pyeb** available from 
 
 2.  Running **pyeb** as a console script::
       
-      python main.py path-to-file.py
+      python main.py sample/binsearch_oo.py
 
 3.  Optionally,  Running **pyeb** as a module::
       
-      python -m pyeb <tests.sqrt>
+      python -m pyeb sample/binsearch_oo.py
 
 4.  Optionally,  Running **pyeb** with **pytest**::
       
-      **pytest** path-to-file.py
+      **pytest** tests/test_binary.py
 
    
 Troubleshooting

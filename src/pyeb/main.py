@@ -21,7 +21,7 @@ def test_initialisation_invs_INV(__machine__):
     s.add(Not(po)) # we add the negation of the formula to the solver
     #
     if s.check() == sat:
-        print('unsat: initialisation events adhere to machine invariants')
+        print('unsat: initialisation events do not adhere to machine invariants')
         print(s.model())
     else:
         print('sat: initialisation events adhere to machine invariants')
@@ -37,7 +37,7 @@ def test_evts_invs_INV(__machine__):
     s.add(Not(po)) # we add the negation of the formula to the solver
     #
     if s.check() == sat:
-        print('unsat: machines invariants hold')
+        print('unsat: machines invariants do not hold')
         print(s.model())
     else:
         print('sat: machine invariants hold')
@@ -53,7 +53,7 @@ def test_evts_acts_FIS(__machine__):
     s.add(Not(po)) # we add the negation of the formula to the solver
     #
     if s.check() == sat:
-        print('unsat: non-deterministic event actions are feasible')
+        print('unsat: non-deterministic event actions are unfeasible')
         print(s.model())
     else:
         print('sat: non-deterministic event actions are feasible')
@@ -69,7 +69,7 @@ def test_thms_THM(__machine__):
     s.add(Not(po)) # we add the negation of the formula to the solver
     #
     if s.check() == sat:
-        print('unsat: theorems hold')
+        print('unsat: theorems do not hold')
         print(s.model())
     else:
         print('sat: theorems hold')
@@ -85,7 +85,7 @@ def test_evts_grd_GRD(__machine__):
     s.add(Not(po)) # we add the negation of the formula to the solver
     #
     if s.check() == sat:
-        print('unsat: concrete event guards are stronger than abstract event guards')
+        print('unsat: concrete event guards are not stronger than abstract event guards')
         print(s.model())
     else:
         print('sat: concrete event guards are stronger than abstract event guards')
@@ -101,7 +101,7 @@ def test_evts_act_SIM(__machine__):
     s.add(Not(po)) # we add the negation of the formula to the solver
     #
     if s.check() == sat:
-        print('unsat: concrete event guards simulate abstract event guards')
+        print('unsat: concrete event guards do not simulate abstract event guards')
         print(s.model())
     else:
         print('sat: concrete event guards simulate abstract event guards')
@@ -118,7 +118,7 @@ def test_evts_VAR(__machine__):
     s.add(Not(po)) # we add the negation of the formula to the solver
     #
     if s.check() == sat:
-        print('unsat: converging events decrease machine variants')
+        print('unsat: converging events do not decrease machine variants')
         print(s.model())
     else:
         print('sat: converging events decrease machine variants')
@@ -134,7 +134,7 @@ def test_evts_WFIS(__machine__):
     s.add(Not(po)) # we add the negation of the formula to the solver
     #
     if s.check() == sat:
-        print('unsat: event witnesses are feasible')
+        print('unsat: event witnesses are unfeasible')
         print(s.model())
     else:
         print('sat: event witnesses are feasible')
@@ -142,7 +142,6 @@ def test_evts_WFIS(__machine__):
 
 
 def main() -> None:
-    print('here in xxx main()')
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'python_file',

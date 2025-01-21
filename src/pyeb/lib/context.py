@@ -99,10 +99,10 @@ class BContext:
       assert th_key in theorems_dict.keys()
 
       th = self.theorems[th_key]
-      theorems_dict.pop(th_key)
+      self.get_theorems() =
 
       axioms = conjunct_dict(self.get_axioms())
-      theorems = conjunct_dict(theorems_dict)
+      theorems = conjunct_dict(self.get_theorems().pop(th_key))
 
       return Implies(And(axioms,theorems),th)
 
