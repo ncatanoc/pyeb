@@ -31,7 +31,7 @@ class Context:
         return Exists(x,And(And(x>=1,x<=self.n),self.f(x) == self.v)) # v IN ran(f)
 
     
-class Machine_BinarySearch_ref0(object) :
+class Machine_Search_ref0(object) :
     def __init__(self,context:Context):
         self.r = Int('r')
         self.context = context
@@ -56,8 +56,8 @@ class Machine_BinarySearch_ref0(object) :
         return (self.r>=0)
 
 
-class Machine_BinarySearch_ref1(Machine_BinarySearch_ref0):
-    def __init__(self,abstract_machine:Machine_BinarySearch_ref0,context:Context):
+class Machine_Search_ref1(Machine_Search_ref0):
+    def __init__(self,abstract_machine:Machine_Search_ref0,context:Context):
         super().__init__(abstract_machine.context)
         self.context = context
         self.abstract_machine = abstract_machine
@@ -84,7 +84,7 @@ class Machine_BinarySearch_ref1(Machine_BinarySearch_ref0):
     def ref_event_progress(self):
         guard = {'grd1_m1': (self.context.f(self.r) != self.context.v)}
         ba = BAssignment({self.r}, prime(self.r) == (self.r+1))
-        progress = BEventRef('inc',super().event_progress())
+        progress = BEventRef('progress',super().event_progress())
         progress.set_status(Status.Convergent)
         progress.add_guards(guard)
         progress.add_bassg(ba)

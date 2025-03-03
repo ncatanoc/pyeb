@@ -94,7 +94,7 @@ class BMachine:
 
     def add_event(self,e):
       """ it adds event e to the machine. """
-      # abcs
+      # 
       k = e.get_name() # k is the event's name
       self.events[k] = e
 
@@ -327,7 +327,7 @@ class BMachineRefines(BMachine):
     """ setters. """    
     def add_ref_event(self,ref_event):
       """ It adds a refinement event. """
-      # abc
+      # 
       abstract_evt_key = ref_event.get_abstract_event().get_name()      
       concrete_evt_key = ref_event.get_name()
       assert abstract_evt_key in self.abstract_machine.get_events().keys() # checking that the abstract event exists

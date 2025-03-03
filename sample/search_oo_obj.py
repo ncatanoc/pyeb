@@ -1,0 +1,79 @@
+from z3 import *
+from pyeb.lib.utils import *
+from pyeb.lib.assignment import *
+from pyeb.lib.event import *
+from pyeb.lib.context import *
+from pyeb.lib.machine import *
+obj0=BContext()
+obj0_f=Function('obj0_f',IntSort(),IntSort())
+obj0.add_constant('obj0_f',obj0_f)
+obj0_n=Const('obj0_n',IntSort())
+obj0.add_constant('obj0_n',obj0_n)
+obj0_v=Const('obj0_v',IntSort())
+obj0.add_constant('obj0_v',obj0_v)
+obj0_axiom_axm1=(obj0_n>=1)
+obj0.add_axiom('obj0_axiom_axm1',obj0_axiom_axm1)
+obj0_axiom_axm2_x=Int('x')
+obj0_axiom_axm2=ForAll(obj0_axiom_axm2_x,Implies(And(obj0_axiom_axm2_x>=1,obj0_axiom_axm2_x<=obj0_n),obj0_f(obj0_axiom_axm2_x)>=0))
+obj0.add_axiom('obj0_axiom_axm2',obj0_axiom_axm2)
+obj0_axiom_axm3_x=Int('x')
+obj0_axiom_axm3=Exists(obj0_axiom_axm3_x,And(And(obj0_axiom_axm3_x>=1,obj0_axiom_axm3_x<=obj0_n),obj0_f(obj0_axiom_axm3_x)==obj0_v))
+obj0.add_axiom('obj0_axiom_axm3',obj0_axiom_axm3)
+obj1=BMachine(obj0)
+obj1_r=Int('obj1_r')
+obj1.add_variable(obj1_r)
+obj1_context=obj0
+obj1.add_context(obj0)
+obj1_event_initialisation_guard={}
+obj1_event_initialisation_init=BAssignment({obj1_r},prime(obj1_r)>=0)
+obj1_event_initialisation=BEvent('initialisation',Status.Ordinary,[],obj1_event_initialisation_guard,obj1_event_initialisation_init)
+obj1.add_initevt(obj1_event_initialisation)
+obj1_event_final_guard={'grd1_m0':And(obj1_r>=1,obj1_r<=obj0_n),'grd2_m0':(obj0_f(obj1_r)==obj0_v)}
+obj1_event_final_ba=skip({obj1_r})
+obj1_event_final=BEvent('final',Status.Ordinary,[],obj1_event_final_guard,obj1_event_final_ba)
+obj1.add_event(obj1_event_final)
+obj1_event_progress_guard={}
+obj1_event_progress_ba=BAssignment({obj1_r},prime(obj1_r)>=0)
+obj1_event_progress=BEvent('progress',Status.Anticipated,[],obj1_event_progress_guard,obj1_event_progress_ba)
+obj1.add_event(obj1_event_progress)
+obj1_invariant_inv1=(obj1_r>=0)
+obj1.add_invariant('obj1_invariant_inv1',obj1_invariant_inv1)
+obj2=BMachineRefines(obj1,obj0)
+obj2_r=obj1_r
+obj2_context=obj1_context
+obj2_context=obj0
+obj2.add_context(obj0)
+obj2_abstract_machine=obj1
+obj2.add_variable(obj2_abstract_machine)
+obj2_variant=(obj0_n-obj2_r)
+obj2.add_variant((obj0_n-obj2_r))
+obj2_ref_event_initialisation_guard={}
+obj2_ref_event_initialisation_ba=BAssignment({obj2_r},prime(obj2_r)==1)
+obj2_ref_event_initialisation_init=BEventRef('initialisation',obj1_event_initialisation)
+obj2_ref_event_initialisation_init.set_status(Status.Ordinary)
+obj2_ref_event_initialisation_init.add_guards(obj2_ref_event_initialisation_guard)
+obj2_ref_event_initialisation_init.add_bassg(obj2_ref_event_initialisation_ba)
+obj2_ref_event_initialisation=obj2_ref_event_initialisation_init
+obj2.add_ref_initevt(obj2_ref_event_initialisation)
+obj2_ref_event_final_guard={'grd1_m1':(obj0_f(obj2_r)==obj0_v)}
+obj2_ref_event_final_ba=skip({obj2_r})
+obj2_ref_event_final_final=BEventRef('final',obj1_event_final)
+obj2_ref_event_final_final.set_status(Status.Ordinary)
+obj2_ref_event_final_final.add_guards(obj2_ref_event_final_guard)
+obj2_ref_event_final_final.add_bassg(obj2_ref_event_final_ba)
+obj2_ref_event_final=obj2_ref_event_final_final
+obj2.add_ref_event(obj2_ref_event_final)
+obj2_ref_event_progress_guard={'grd1_m1':(obj0_f(obj2_r)!=obj0_v)}
+obj2_ref_event_progress_ba=BAssignment({obj2_r},prime(obj2_r)==(obj2_r+1))
+obj2_ref_event_progress_progress=BEventRef('progress',obj1_event_progress)
+obj2_ref_event_progress_progress.set_status(Status.Convergent)
+obj2_ref_event_progress_progress.add_guards(obj2_ref_event_progress_guard)
+obj2_ref_event_progress_progress.add_bassg(obj2_ref_event_progress_ba)
+obj2_ref_event_progress=obj2_ref_event_progress_progress
+obj2.add_ref_event(obj2_ref_event_progress)
+obj2_invariant_inv1=And(obj2_r>=1,obj2_r<=obj0_n)
+obj2.add_invariant('obj2_invariant_inv1',obj2_invariant_inv1)
+obj2_invariant_inv2_x=Int('x')
+obj2_invariant_inv2=ForAll(obj2_invariant_inv2_x,Implies(And(obj2_invariant_inv2_x>=1,obj2_invariant_inv2_x<=(obj2_r-1)),obj0_f(obj2_invariant_inv2_x)!=obj0_v))
+obj2.add_invariant('obj2_invariant_inv2',obj2_invariant_inv2)
+__machine__ = obj2
