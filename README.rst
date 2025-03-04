@@ -5,7 +5,7 @@ are written in Python following a special Object-Oriented syntax and
 notation. The **pyeb** tool generates proof obligations such as
 invariant preservation, feasibility of non-deterministic event
 actions, guard strengthening, simulation, preservation of machine
-variants, among others.  **pyeb** uses `Z3's Python API<https://z3prover.github.io/api/html/namespacez3py.html>`
+variants, among others.  **pyeb** uses `Z3 Python API<https://z3prover.github.io/api/html/namespacez3py.html>`
 to discharge the proof obligations automatically. It supports large
 parts of Event-B' syntax such as non-deterministic assignments,
 events, machines, contexts, and machine refinements.
@@ -13,7 +13,17 @@ events, machines, contexts, and machine refinements.
 **pyeb** is implemented as a library and is hosted on **pypi**
   (Python's package index). `Here is the link<https://pypi.org/project/pyeb/>`. **pyeb** can be installed using **pip**.
 
-As future work, we plan to support code generation for **pyeb** models into Python and Rust programming languages. Our future work on code generation will focus on two axes: *(i.)* we plan to generate code for sequential programs as described by J.-R. Abrial `here<https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/122/>`, and *(ii.)* we plan to generate code for concurrent reactive systems similar to the approach followed by the `EventB2Java tool<https://link.springer.com/article/10.1007/s10009-015-0381-2>`.
+As future work, we plan to support code generation for **pyeb** models
+into Python and Rust programming languages. Our future work on code
+generation will focus on two axes: *(i.)* we plan to generate code for
+sequential programs as described by J.-R. Abrial
+`here <https://web-archive.southampton.ac.uk/deploy-eprints.ecs.soton.ac.uk/122/>`,
+and *(ii.)* we plan to generate code for concurrent reactive systems
+similar to the approach followed by the `EventB2Java
+tool <https://link.springer.com/article/10.1007/s10009-015-0381-2>`.
+
+
+`Z3 Python API <http://viper.ethz.ch>`_
 
       
 Getting Started (Mac OS X)
