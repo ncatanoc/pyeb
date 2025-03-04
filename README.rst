@@ -30,7 +30,7 @@ tools.
 	  
       source .venv/bin/activate 
 
- 2. Optionally, you can deactivate the virtual environment  after
+2. Optionally, you can deactivate the virtual environment  after
       using **pyeb**::
 
 	deactivate
