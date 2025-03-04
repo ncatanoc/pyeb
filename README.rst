@@ -30,12 +30,12 @@ tools.
 	  
       source .venv/bin/activate 
 
-      Optionally, you can deactivate the virtual environment  after
+ 2. Optionally, you can deactivate the virtual environment  after
       using **pyeb**::
 
-      deactivate
+	deactivate
       
-2.  Installing dependencies::
+3.  Installing dependencies::
       
       pip install z3-solver==4.13.0.0
 
@@ -44,7 +44,7 @@ tools.
       pip install antlr4-python3-runtime==4.13.1
       
 
-3.  Installing **pyeb**::
+4.  Installing **pyeb**::
       
       pip install pyeb
 
@@ -56,9 +56,11 @@ Command Line Usage (Mac OS)
 
      pyeb python-file
 
- We have included a **sample** folder with several object-oriented  examples of sequential algorithms (binary search, squared root, inverse function, etc.)::
+2. We have included a **sample** folder with several object-oriented
+   examples of sequential algorithms (binary search, squared root,
+   inverse function, etc.)::
 
-      pyeb sample/binsearch_oo.py
+     pyeb sample/binsearch_oo.py
 
       
 Unit testing with **pytest**
