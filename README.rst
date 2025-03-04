@@ -6,8 +6,8 @@ of non-deterministic event actions, guard strengthening, simulation, preservatio
 variants, among others.  **pyeb** uses `Z3 Python API
 <https://z3prover.github.io/api/html/namespacez3py.html>`_ to discharge the proof obligations
 automatically. It supports large parts of Event-B' syntax such as non-deterministic assignments, **aaa**
-events, machines, contexts, and machine refinements. **xxx** **pyeb** is implemented as a library and is hosted on **pypi**
-  (Python's package index). `Here is the link<https://pypi.org/project/pyeb/>`_. **pyeb** can be installed using **pip**.
+events, machines, contexts, and machine refinements. **pyeb** is implemented as a library
+and. It is hoested `here <https://pypi.org/project/pyeb/>`_. 
 
 As future work, we plan to support code generation for **pyeb** models into Python and Rust
 programming languages. Our future work on code generation will focus on two axes: *(i.)* we plan to
