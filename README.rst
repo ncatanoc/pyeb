@@ -1,4 +1,4 @@
-**pyeb** is a Python implementation of `Event-B's refinement calculus. It takes an Event-B model as
+**pyeb** is a Python implementation of Event-B's refinement calculus. It takes an Event-B model as
 an input and generates proof-obligations that are eventually discharged with the Z3 SMT
 solver. Event-B models are written in Python following a special Object-Oriented syntax and
 notation. The **pyeb** tool generates proof obligations such as invariant preservation, feasibility
