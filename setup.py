@@ -28,7 +28,7 @@ from setuptools import setup, find_packages
 
 setup(
         name='pyeb',
-        version='1.0.63',
+        version='1.0.65',
         author='Nestor Catano',
         author_email='nestor.catano@gmail.com',
         license='MIT License',
@@ -46,7 +46,7 @@ setup(
              },
         url='https://github.com/ncatanoc/pyeb',
         description='A refinement calculus implementation of Event-B in Python.',
-        long_description=(open('README_pip.md').read()),
+        long_description=(open('README.rst').read()),
         long_description_content_type="text/markdown",
         classifiers=[
             'Development Status :: 2 - Pre-Alpha',
