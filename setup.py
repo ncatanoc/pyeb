@@ -36,7 +36,7 @@ setup(
         package_dir={'': 'src'},
         install_requires=[
             'z3-solver==4.13.0.0',
-            'antlr4-tools',
+            'antlr4-tools==0.2.1',
             'antlr4-python3-runtime>=4.13.1'
             ],
         entry_points = {

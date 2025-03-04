@@ -1,0 +1,87 @@
+from z3 import *
+from pyeb.lib.utils import *
+from pyeb.lib.assignment import *
+from pyeb.lib.event import *
+from pyeb.lib.context import *
+from pyeb.lib.machine import *
+obj0=BContext()
+obj0_f=Function('obj0_f',IntSort(),IntSort())
+obj0.add_constant('obj0_f',obj0_f)
+obj0_n=Const('obj0_n',IntSort())
+obj0.add_constant('obj0_n',obj0_n)
+obj0_axiom_axm1=(obj0_n>0)
+obj0.add_axiom('obj0_axiom_axm1',obj0_axiom_axm1)
+obj0_axiom_axm2_x=Int('x')
+obj0_axiom_axm2=ForAll(obj0_axiom_axm2_x,Implies(And(obj0_axiom_axm2_x>=1,obj0_axiom_axm2_x<=obj0_n),obj0_f(obj0_axiom_axm2_x)>=0))
+obj0.add_axiom('obj0_axiom_axm2',obj0_axiom_axm2)
+obj1=BMachine(obj0)
+obj1_m=Int('obj1_m')
+obj1.add_variable(obj1_m)
+obj1_context=obj0
+obj1.add_context(obj0)
+obj1_event_initialisation_guard={}
+obj1_event_initialisation_init=BAssignment({obj1_m},prime(obj1_m)==0)
+obj1_event_initialisation=BEvent('initialisation',Status.Ordinary,[],obj1_event_initialisation_guard,obj1_event_initialisation_init)
+obj1.add_initevt(obj1_event_initialisation)
+obj1_event_mini_guard={}
+obj1_event_mini_ba=BAssignment({obj1_m},prime(obj1_m)>=0)
+obj1_event_mini=BEvent('mini',Status.Ordinary,[],obj1_event_mini_guard,obj1_event_mini_ba)
+obj1.add_event(obj1_event_mini)
+obj1_event_progress_guard={}
+obj1_event_progress_ba=BAssignment({obj1_m},prime(obj1_m)>=0)
+obj1_event_progress=BEvent('progress',Status.Anticipated,[],obj1_event_progress_guard,obj1_event_progress_ba)
+obj1.add_event(obj1_event_progress)
+obj1_invariant_inv1=(obj1_m>=0)
+obj1.add_invariant('obj1_invariant_inv1',obj1_invariant_inv1)
+obj2=BMachineRefines(obj1,obj0)
+obj2_m=obj1_m
+obj2_context=obj1_context
+obj2_context=obj0
+obj2.add_context(obj0)
+obj2_abstract_machine=obj1
+obj2.add_variable(obj2_abstract_machine)
+obj2_p=Int('obj2_p')
+obj2.add_variable(obj2_p)
+obj2_q=Int('obj2_q')
+obj2.add_variable(obj2_q)
+obj2_variant=(obj2_q-obj2_p)
+obj2.add_variant((obj2_q-obj2_p))
+obj2_ref_event_initialisation_guard={}
+obj2_ref_event_initialisation_ba=BAssignment({obj2_m,obj2_p,obj2_q},And(prime(obj2_m)==0,prime(obj2_p)==1,prime(obj2_q)==obj0_n))
+obj2_ref_event_initialisation_init=BEventRef('initialisation',obj1_event_initialisation)
+obj2_ref_event_initialisation_init.set_status(Status.Ordinary)
+obj2_ref_event_initialisation_init.add_guards(obj2_ref_event_initialisation_guard)
+obj2_ref_event_initialisation_init.add_bassg(obj2_ref_event_initialisation_ba)
+obj2_ref_event_initialisation=obj2_ref_event_initialisation_init
+obj2.add_ref_initevt(obj2_ref_event_initialisation)
+obj2_ref_event_mini_guard={'grd1':(obj2_p==obj2_q)}
+obj2_ref_event_mini_ba=BAssignment({obj2_m,obj2_p,obj2_q},And(prime(obj2_m)==obj0_f(obj2_p),prime(obj2_p)==obj2_p,prime(obj2_q)==obj2_q))
+obj2_ref_event_mini_mini=BEventRef('mini',obj1_event_mini)
+obj2_ref_event_mini_mini.set_status(Status.Ordinary)
+obj2_ref_event_mini_mini.add_guards(obj2_ref_event_mini_guard)
+obj2_ref_event_mini_mini.add_bassg(obj2_ref_event_mini_ba)
+obj2_ref_event_mini=obj2_ref_event_mini_mini
+obj2.add_ref_event(obj2_ref_event_mini)
+obj2_ref_event_inc_guard={'grd1':(obj2_p<obj2_q),'grd2':(obj0_f(obj2_p)>obj0_f(obj2_q))}
+obj2_ref_event_inc_ba=BAssignment({obj2_m,obj2_p,obj2_q},And(prime(obj2_p)==obj2_p+1,prime(obj2_m)==obj2_m,prime(obj2_q)==obj2_q))
+obj2_ref_event_inc_inc=BEventRef('inc',obj1_event_progress)
+obj2_ref_event_inc_inc.set_status(Status.Convergent)
+obj2_ref_event_inc_inc.add_guards(obj2_ref_event_inc_guard)
+obj2_ref_event_inc_inc.add_bassg(obj2_ref_event_inc_ba)
+obj2_ref_event_inc=obj2_ref_event_inc_inc
+obj2.add_ref_event(obj2_ref_event_inc)
+obj2_ref_event_dec_guard={'grd1':(obj2_p<obj2_q),'grd2':(obj0_f(obj2_p)<=obj0_f(obj2_q))}
+obj2_ref_event_dec_ba=BAssignment({obj2_m,obj2_p,obj2_q},And(prime(obj2_q)==obj2_q-1,prime(obj2_m)==obj2_m,prime(obj2_p)==obj2_p))
+obj2_ref_event_dec_dec=BEventRef('dec',obj1_event_progress)
+obj2_ref_event_dec_dec.set_status(Status.Convergent)
+obj2_ref_event_dec_dec.add_guards(obj2_ref_event_dec_guard)
+obj2_ref_event_dec_dec.add_bassg(obj2_ref_event_dec_ba)
+obj2_ref_event_dec=obj2_ref_event_dec_dec
+obj2.add_ref_event(obj2_ref_event_dec)
+obj2_invariant_inv1=And(obj2_p>=1,obj2_p<=obj0_n)
+obj2.add_invariant('obj2_invariant_inv1',obj2_invariant_inv1)
+obj2_invariant_inv2=And(obj2_q>=1,obj2_q<=obj0_n)
+obj2.add_invariant('obj2_invariant_inv2',obj2_invariant_inv2)
+obj2_invariant_inv3=(obj2_p<=obj2_q)
+obj2.add_invariant('obj2_invariant_inv3',obj2_invariant_inv3)
+__machine__ = obj2
